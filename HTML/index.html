@@ -4,6 +4,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Quantity Measurnment</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="../JAVASCRIPT/main.js"></script>
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,12 +15,12 @@
 <body>
     <div class="topHead">
         <div>
-        <div>
-            Quanment
-        </div>
-        <div>
-            History
-        </div>
+            <div>
+                Quanment
+            </div>
+            <div>
+                History
+            </div>
         </div>
     </div>
     <div id="header">
@@ -30,47 +31,62 @@
             <div>
                 Choose type
             </div>
-            <div class="mainCards">
-                <div>
-                    <img src="../ASSETS/scale.svg">
-                    <h4>Length</h4>
+            <div class="mainCards" id="cards">
+                <div id="childDiv1">
+                    <img id="scaleImg" src="../ASSETS/scale.svg">
+                    <h4 id="cardText1">Length</h4>
                 </div>
-                <div>
-                    <img src="../ASSETS/beaker (1).svg">
-                    <h4>Temperature</h4>
+                <div id="childDiv2">
+                    <img id="hotImg" src="../ASSETS/hot.svg">
+                    <h4 id="cardText2">Temperature</h4>
 
                 </div>
-                <div>
-                    <img src="../ASSETS/hot.svg">
-                    <h4>Volume</h4>
+                <div id="childDiv3">
+                    <img id="beakerImg" src="../ASSETS/beaker.svg">
+                    <h4 id="cardText3">Volume</h4>
 
                 </div>
-        
+
             </div>
             <div class="calculationCard">
                 <div>
                     <p>From</p>
                     <div class="displayResult">
-                        <div>
-                            1
-                        </div>
+                        <input id="inputDigits" value="1" oninput="temperatureConverter(this.value)"
+                            onchange="temperatureConverter(this.value)">
+
+
                         <hr>
                         <div>
-                            <h5>Meters</h5>
-                            <i class="fa fa-caret-down"></i>
+                            <select id="selectItem">
+                                <option class="firstOption">Meter</option>
+                                <option class="secondOption">Centimeters</option>
+                                <option class="thirdOption" value="Kilometer">Kilometer</option>
+                                <option class="fourthOption" value="foot">foot</option>
+                                <option class="fifthOption" value="inch">inch</option>
+                            </select>
+
                         </div>
+
                     </div>
+
                 </div>
                 <div>
                     <p>To</p>
                     <div class="displayResult">
-                        <div>
+                        <div id="outputCelcius">
                             100
                         </div>
                         <hr>
                         <div>
-                            <h5>Centimetres</h5>
-                            <i class="fa fa-caret-down"></i>
+
+                            <select id="selectItemTo">
+                                <option class="firstOption1" value="Centimeters">Centimeters</option>
+                                <option class="secondOption1" value="Meter">Meter</option>
+                                <option class="thirdOption1" value="Kilometer">Kilometer</option>
+                                <option class="fourthOption1" value="foot">foot</option>
+                                <option class="fifthOption1" value="inch">inch</option>
+                            </select>
                         </div>
                     </div>
                 </div>

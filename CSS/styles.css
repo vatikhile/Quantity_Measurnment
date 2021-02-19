@@ -3,14 +3,17 @@ body {
   height: 100%;
   font-family: Montserrat;
 }
+
 body {
   margin: 0;
   background-color: #f5f6fa;
 }
+
 /* * {
     font-family: 'Montserrat';
     src: url('../Font/Montserrat-Regular.ttf');
 } */
+
 @font-face {
   font-family: Montserrat;
   src: url(../Font/Montserrat-Regular.ttf);
@@ -27,6 +30,12 @@ body {
   height: 65px;
 }
 
+@media screen and (max-width: 1289px) {
+  #header h1 {
+    display: flex;
+    justify-content: center;
+  }
+}
 #header h1 {
   font: normal normal normal 20px/30px Montserrat;
   letter-spacing: 0px;
@@ -36,6 +45,7 @@ body {
   width: 932px;
   font-weight: 500;
 }
+
 .content {
   margin-top: 72px;
   display: flex;
@@ -44,17 +54,22 @@ body {
   justify-content: center;
   /* place-content: center; */
 }
-.subContent {
-  /* width: 829px; */
 
-  /* max-width: 1035px; */
-  /* text-align: left;
+/* .subContent { */
+
+/* width: 829px; */
+
+/* max-width: 1035px; */
+
+/* text-align: left;
   font: normal normal medium 15px/19px Montserrat;
   letter-spacing: 0px;
   color: #000000;
   text-transform: uppercase;
   opacity: 1; */
-}
+
+/* } */
+
 .subContent > div:first-child {
   /* background-color: red; */
   margin-bottom: 20px;
@@ -73,6 +88,15 @@ body {
     margin-left: 209px;
     margin-top: 24px; */
 }
+@media screen and (max-width: 610px) {
+  .mainCards {
+    display: flex;
+    flex-direction: column;
+  }
+  .mainCards > div {
+    margin-bottom: 30px;
+  }
+}
 .mainCards > div {
   width: 164px;
   height: 130px;
@@ -83,73 +107,113 @@ body {
   display: flex;
   place-content: center;
   flex-direction: column;
+  cursor: pointer;
 }
-.mainCards > div:first-child {
-  background-color: #edfdf9;
-  border: 1px solid #0ec098;
-}
+
+/* .mainCards>div:first-child {
+    background-color: #edfdf9;
+    border: 1px solid #0ec098;
+    box-shadow: 0px 3px 6px #00000029;
+} */
+
 h4 {
   margin: 16px 0px 0px;
   /* text-align: left; */
   /* font: normal normal medium 15px/19px Montserrat; */
   letter-spacing: 0px;
-  color: #000000;
+  /* color: #000000; */
   text-transform: capitalize;
-  opacity: 0.21;
+  /* opacity: 0.21; */
   font-size: 13px;
 }
+
 .mainCards > div:first-child h4 {
   color: #13a062;
 }
+
 .calculationCard {
   display: flex;
   flex-direction: row;
   margin-top: 25px;
 }
+@media screen and (max-width: 610px) {
+  .calculationCard {
+    display: flex;
+    flex-direction: column;
+  }
+  .displayResult {
+    margin-bottom: 50px;
+  }
+  .subContent {
+    display: flex;
+    place-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  #header h1 {
+    font-size: 12px;
+  }
+}
 .calculationCard:first-child {
   display: flex;
   flex-direction: column;
 }
+
 .calculationCard div > p {
   font-size: 12px;
   text-transform: uppercase;
   opacity: 0.62;
   margin: 3px 0px;
 }
+
 .displayResult {
   border: 1px solid #e7dcfe;
   width: 258px;
   margin-right: 24px;
   background-color: #ffffff;
 }
+
 .displayResult hr {
   /* border:0; */
   border-top: 1px solid #e7dcfe;
   /* margin:20px 0 */
 }
+
 /* .displayResult div:nth-child{
   background-color: red;
 } */
+
 .displayResult > div:nth-child(1) {
   padding: 15px 16px 0px;
   font-weight: 700;
   font-size: 18px;
 }
+/* .displayResult>div:nth-child(1):focus {
+    outline: none;
+} */
+#inputDigits {
+  padding: 15px 0px 0px 14px;
+  font-weight: 600;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid transparent;
+}
+
 .displayResult > div:nth-child(3) h5 {
   /* padding: 7px 16px; 
      */
   /* background-color: red; */
   margin: 0px;
 }
-.displayResult > div:nth-child(3) {
-  display: flex;
-  flex-direction: row;
-  place-content: space-between;
-  font-size: 11px;
-  margin: 9px 12px;
 
+.displayResult > div:nth-child(3) {
+  /* display: flex;
+  flex-direction: row;
+  place-content: space-between; */
+  margin: 0px 12px 9px;
   /* background-color: red; */
 }
+
 .topHead > div {
   display: flex;
   flex-direction: row;
@@ -160,6 +224,7 @@ h4 {
   align-items: center;
   justify-content: space-around;
 }
+
 .topHead > div div:nth-child(1) {
   /* text-align: left; */
   font: normal normal 600 20px/31px Poppins;
@@ -174,13 +239,40 @@ h4 {
   color: #000000;
   opacity: 1;
 }
+
+#selectItem {
+  width: -webkit-fill-available;
+  outline: none;
+  border: 1px solid transparent;
+  height: 25px;
+  background-color: transparent;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+#selectItem option:focus {
+  background-color: aquamarine;
+  /* width: 500px; */
+}
+#selectItemTo {
+  width: -webkit-fill-available;
+  outline: none;
+  border: 1px solid transparent;
+  height: 25px;
+  background-color: transparent;
+  font-size: 11px;
+  font-weight: 600;
+}
+
 /* .topHead>div{
   width: 10px;
 } */
+
 /* .displayResult > div:nth-child(3) i
 {
 float:right;
 } */
+
 /* 
 .mainCards > div {
   background-color: white;
@@ -191,14 +283,15 @@ float:right;
   flex-direction: row;
   align-items: center;
   place-content: center;
-  border-radius: 7px;
-}
+  border-radius: 7
 .mainCards > div:hover {
   border: 1px solid #4f70dd;
 } */
+
 /* .mainCards img {
   width: 100px;
 } */
-/* .mainCards > div:focus {
-    background-color: red;
+
+/* .mainCards > div img:nth-child(2):hover {
+  background:url("../ASSETS/beaker_color.svg")
   } */
