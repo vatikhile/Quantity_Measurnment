@@ -12,15 +12,13 @@ $(document).ready(function () {
     });
     $("#selectItemTo").change(function () {
         selectedUnitTo = $(this).children("option:selected").val();
-        console.log("units", selectedUnitTo);
-
         var inputData = $('#inputDigits').val();
         console.log("input", inputData);
         temperatureConverter(inputData)
 
 
     });
-    console.log("from to", selectedUnitFrom + selectedUnitTo);
+
     if (clickScale == true && clickHot == true && clickBeaker == true) {
         $("#childDiv1").css("border", "1px solid #0EC098");
         $("#childDiv1").css("background-color", "#EDFDF9");
@@ -32,18 +30,9 @@ $(document).ready(function () {
         clickScale = false
         clickHot = true;
         clickBeaker = true;
-        $("#childDiv2").css("border", "1px solid transparent");
-        $("#childDiv2").css("background-color", "white");
-        $('#hotImg').attr('src', '../ASSETS/hot.svg');
-        $("#cardText2").css("color", "gray")
-        $("#childDiv3").css("border", "1px solid transparent");
-        $("#childDiv3").css("background-color", "white");
-        $('#beakerImg').attr('src', '../ASSETS/beaker.svg');
-        $("#cardText3").css("color", "gray")
-        $("#childDiv1").css("border", "1px solid #0EC098");
-        $("#childDiv1").css("background-color", "#EDFDF9");
-        $('#scaleImg').attr('src', '../ASSETS/scale_color.svg');
-        $("#cardText1").css("color", "#0EC098")
+        hotDisable()
+        beakerDisable()
+        scaleEnable()
         $('.firstOption').text('Meter');
         $('.secondOption').text('Centimeters');
         $('.thirdOption').text('Kilometer');
@@ -62,18 +51,9 @@ $(document).ready(function () {
         clickHot = false;
         clickBeaker = true;
         clickScale = true;
-        $("#childDiv1").css("border", "1px solid transparent");
-        $("#childDiv1").css("background-color", "white");
-        $('#scaleImg').attr('src', '../ASSETS/scale.svg');
-        $("#cardText1").css("color", "gray")
-        $("#childDiv3").css("border", "1px solid transparent");
-        $("#childDiv3").css("background-color", "white");
-        $('#beakerImg').attr('src', '../ASSETS/beaker.svg');
-        $("#cardText3").css("color", "gray")
-        $(this).css("border", "1px solid #FD5160");
-        $(this).css("background-color", "#FFEEF0");
-        $('#hotImg').attr('src', '../ASSETS/hot_color.svg');
-        $("#cardText2").css("color", "#FD5160")
+        scaleDisable()
+        beakerDisable()
+        hotEnable()
         $('.firstOption').text('Celcius');
         $('.secondOption').text('Fahrenheit');
         $('.thirdOption').text('Kelvin');
@@ -92,27 +72,16 @@ $(document).ready(function () {
         clickBeaker = false;
         clickScale = true;
         clickHot = true;
-        $("#childDiv2").css("border", "1px solid transparent");
-        $("#childDiv2").css("background-color", "white");
-        $('#hotImg').attr('src', '../ASSETS/hot.svg');
-        $("#cardText2").css("color", "gray")
-        $("#childDiv1").css("border", "1px solid transparent");
-        $("#childDiv1").css("background-color", "white");
-        $('#scaleImg').attr('src', '../ASSETS/scale.svg');
-        $("#cardText1").css("color", "gray")
-        $(this).css("border", "1px solid #7224FF");
-        $(this).css("background-color", "#E8DDFF");
-        $('#beakerImg').attr('src', '../ASSETS/beaker_color.svg');
-        $("#cardText3").css("color", "#7224FF")
+        hotDisable()
+        scaleDisable()
+        beakerEnable()
         $('.firstOption').text('Liters');
         $('.secondOption').text('Milliliters');
-        // $('.secondOption').prop('disabled', true);
         $('.thirdOption').text('Gallons');
         $('.fourthOption').text('');
         $('.fifthOption').text('');
         $('.firstOption1').text('Milliliters');
         $('.secondOption1').text('Liters');
-        // $('.secondOption').prop('disabled', true);
         $('.thirdOption1').text('Gallons');
         $('.fourthOption1').text('');
         $('.fifthOption1').text('');
@@ -125,21 +94,27 @@ $(document).ready(function () {
         $('#scaleImg').attr('src', '../ASSETS/scale_color.svg');
         $("#cardText1").css("color", "#0EC098")
     }, function () {
-        if (clickScale == true) {
+        if (clickScale == false) {
             $("#childDiv1").css("border", "1px solid #0EC098");
             $("#childDiv1").css("background-color", "#EDFDF9");
             $('#scaleImg').attr('src', '../ASSETS/scale_color.svg');
             $("#cardText1").css("color", "#0EC098")
         }
+        else {
+            $("#childDiv1").css("border", "1px solid transparent");
+            $("#childDiv1").css("background-color", "white");
+            $('#scaleImg').attr('src', '../ASSETS/scale.svg');
+            $("#cardText1").css("color", "gray")
+        }
     });
 
     $("#childDiv2").hover(function () {
-        // if(clickHot == false){
+
         $(this).css("border", "1px solid #FD5160");
         $(this).css("background-color", "#FFEEF0");
         $('#hotImg').attr('src', '../ASSETS/hot_color.svg');
         $("#cardText2").css("color", "#FD5160")
-        // }
+
     }, function () {
         if (clickHot == true) {
             $(this).css("border", "1px solid transparent");
@@ -242,5 +217,48 @@ function Celcius_to_Fahrenheit(valNum) {
     document.getElementById("outputCelcius").innerHTML = (meter * 1.8) + 32
 }
 
+function scaleDisable() {
+    $("#childDiv1").css("border", "1px solid transparent");
+    $("#childDiv1").css("background-color", "white");
+    $('#scaleImg').attr('src', '../ASSETS/scale.svg');
+    $("#cardText1").css("color", "gray")
 
+}
+function scaleEnable() { } {
+    $("#childDiv1").css("border", "1px solid #0EC098");
+    $("#childDiv1").css("background-color", "#EDFDF9");
+    $('#scaleImg').attr('src', '../ASSETS/scale_color.svg');
+    $("#cardText1").css("color", "#0EC098")
+
+}
+
+function hotDisable() {
+    $("#childDiv2").css("border", "1px solid transparent");
+    $("#childDiv2").css("background-color", "white");
+    $('#hotImg').attr('src', '../ASSETS/hot.svg');
+    $("#cardText2").css("color", "gray")
+
+}
+function hotEnable() {
+    $(this).css("border", "1px solid #FD5160");
+    $(this).css("background-color", "#FFEEF0");
+    $('#hotImg').attr('src', '../ASSETS/hot_color.svg');
+    $("#cardText2").css("color", "#FD5160")
+
+}
+
+function beakerDisable() {
+    $("#childDiv3").css("border", "1px solid transparent");
+    $("#childDiv3").css("background-color", "white");
+    $('#beakerImg').attr('src', '../ASSETS/beaker.svg');
+    $("#cardText3").css("color", "gray")
+
+
+}
+function beakerEnable() {
+    $(this).css("border", "1px solid #7224FF");
+    $(this).css("background-color", "#E8DDFF");
+    $('#beakerImg').attr('src', '../ASSETS/beaker_color.svg');
+    $("#cardText3").css("color", "#7224FF")
+}
 
